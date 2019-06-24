@@ -6,7 +6,8 @@ import (
 	"net/http"
 )
 
-func sendJSON(payload interface{}, w http.ResponseWriter) {
+// SendJSON will send a JSON response
+func SendJSON(payload interface{}, w http.ResponseWriter) {
 
 	jstring, err := json.Marshal(payload)
 	if err != nil {
@@ -23,7 +24,8 @@ func sendJSON(payload interface{}, w http.ResponseWriter) {
 	w.Write(jstring)
 }
 
-func sendEmptyResponse(statusCode int, w http.ResponseWriter) {
+// SendEmptyResponse will send an empty JSON response
+func SendEmptyResponse(statusCode int, w http.ResponseWriter) {
 	w.WriteHeader(statusCode)
 	w.Write([]byte(``))
 }
